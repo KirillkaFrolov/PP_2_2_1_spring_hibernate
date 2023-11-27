@@ -1,40 +1,45 @@
 package hiber.model;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.MapsId;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "cars")
 public class Car {
-
     @Id
-    private Long carId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long car_id;
 
     @Column(name = "model")
     private String model;
 
     @Column(name = "series")
-    private int series;
+    private Integer series;
 
-    @OneToOne
-    @MapsId
+    @OneToOne(mappedBy = "car")
     private User user;
-
 
     public Car() {
     }
 
-    public Car(String model, int series) {
+    public Car(String model, Integer series) {
         this.model = model;
         this.series = series;
     }
 
-    public Long getId() {
-        return carId;
+    public Long getCar_id() {
+        return car_id;
     }
 
-    public void setId(Long id) {
-        this.carId = id;
+    public void setCar_id(Long car_id) {
+        this.car_id = car_id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getModel() {
@@ -45,31 +50,21 @@ public class Car {
         this.model = model;
     }
 
-    public int getSeries() {
+    public Integer getSeries() {
         return series;
     }
 
-    public void setSeries(int series) {
+    public void setSeries(Integer series) {
         this.series = series;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public User setUser(User user) {
-        this.user = user;
-        return user;
     }
 
     @Override
     public String toString() {
-        return "Car {" +
-                "id=" + carId +
+        return "Car{" +
+                "car_id=" + car_id +
                 ", model='" + model + '\'' +
                 ", series=" + series +
+                ", user=" + user +
                 '}';
     }
-
-
 }

@@ -22,9 +22,9 @@ public class UserDaoImp implements UserDao {
     }
 
     @Override
-    @SuppressWarnings("unchecked")
+//    @SuppressWarnings("unchecked")
     public List<User> listUsers() {
-        TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("from User");
+        TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("from User", User.class);
         return query.getResultList();
     }
 
@@ -32,7 +32,7 @@ public class UserDaoImp implements UserDao {
     @SuppressWarnings("unchecked")
     public User getUserByCar(String model, int series) {
 
-        TypedQuery<User> typedQuery = sessionFactory.getCurrentSession().createQuery("from User user where user.car.model =: model and  user.car.series =: series");
+        TypedQuery<User> typedQuery = sessionFactory.getCurrentSession().createQuery("from User where car.model =: model and car.series =: series");
         typedQuery.setParameter("model", model).setParameter("series", series);
 
         return typedQuery.getSingleResult();

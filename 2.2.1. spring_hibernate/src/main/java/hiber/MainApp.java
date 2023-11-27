@@ -26,10 +26,15 @@ public class MainApp {
         Car car3 = new Car("car3", 333);
         Car car4 = new Car("car4", 444);
 
-        userService.add(user1.setCar(car1).setUser(user1));
-        userService.add(user2.setCar(car2).setUser(user2));
-        userService.add(user3.setCar(car3).setUser(user3));
-        userService.add(user4.setCar(car4).setUser(user4));
+        user1.setCar(car1);
+        user2.setCar(car2);
+        user3.setCar(car3);
+        user4.setCar(car4);
+
+        userService.add(user1);
+        userService.add(user2);
+        userService.add(user3);
+        userService.add(user4);
 
         List<User> users = userService.listUsers();
         for (User user : users) {

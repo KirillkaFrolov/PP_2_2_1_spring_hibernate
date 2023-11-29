@@ -37,11 +37,10 @@ public class MainApp {
 
         List<User> users = userService.listUsers();
         for (User user : users) {
-            System.out.println(String.format("Id = %d%nFirst Name = %s%nLast Name = %s%nEmail = %s%nCar = %s%n---------------------------------------------",
-                    user.getId(), user.getFirstName(), user.getLastName(), user.getEmail(), user.getCar()));
+            System.out.println(user);
         }
 
-        System.out.println(userService.getUserByCar(car1.getModel(), car1.getSeries()));
+        System.out.println(userService.getUserByCar("car1", 111));
         context.close();
 
     }
